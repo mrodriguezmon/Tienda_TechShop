@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Contactanos</title>
+        <meta charset="UTF-8">
+        <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav">
+                <a href="index.html" class="logo nav-link">Gamer Store</a>
+                <ul class="nav-menu">
+                    <li class="nav-menu-item"><<a class="navm-menu-link nav-link" href="index.html">Menú Principal</a>/li>
+                    <li class="nav-menu-item"><<a class="navm-menu-link nav-link" href="Nintendo.html">Nintendo</a> /li>
+                    <li class="nav-menu-item"><<a class="navm-menu-link nav-link" href="Microsoft.html">Xbox</a> /li>
+                    <li class="nav-menu-item"><<a class="navm-menu-link nav-link" href="Sony.html">PlayStation</a> /li>
+                    <li class="nav-menu-item"><<a class="navm-menu-link nav-link" href="Accesorios.html">Accesorios</a> /li>
+                    <li class="nav-menu-item"><<a class="navm-menu-link nav-link" href="Otras consolas.html">Otras consolas</a> /li>
+                    <li class="nav-menu-item"><<a class="navm-menu-link nav-link" href="Ubicacion.html">Encuentranos</a> /li>
+                </ul>  
+            </nav>
+        </header>
+
+        <section class="section">
+            <article>
+                <header>
+                    <h2>Complete con su información y consulta y lo contactaremos</h2>
+                </header>
+
+                <form action="#">
+                    <table border="0" cellspacing="5" cellpadding="5">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Nombre Completo</td>
+                                <td><input type="text" name="nombre"
+                                           placeholder="Nombre Completo"
+                                           size="40"/></td>
+                            </tr>
+                            <tr>
+                                <td>Usuario</td>
+                                <td><input type="email"
+                                           name="usuario" placeholder="correo@correo.com"
+                                           size="25"/></td>
+                            </tr>
+                            <tr>
+                                <td>Telefono</td>
+                                <td><input type="tel"
+                                           name="telefono"
+                                           size="8"/></td>
+                            </tr>
+                            <tr>
+                                <td>Escribanos su consulta</td>
+                                <td><input type="text"
+                                           name="consulta"
+                                           size="200"/></td>
+                            </tr>
+                            <tr>
+                                <td>Dirección exacta</td>
+                                <td><textarea name="dirección" rows="4" cols="40"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Tipo de consulta</td>
+                                <td>
+                                    <select name="nivel 1">
+                                        <option value="0">Queja sobre servicio al cliente</option>
+                                        <option value="1">Falta de actualización de inventario en sitio web</option>
+                                        <option value="2">No encuentro un artículo</option>
+                                        <option value="3">Producto defectuoso</option>
+                                        <option value="4">Otros</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Acciones</td>
+                                <td>
+                                    <input type="reset" value="Limpiar"/>
+                                    <input type="submit" value="Enviar"/> 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    Declario bajo juramento que la información es veraz <input type="checkbox" name="jura" required />
+
+                </form>
+
+            </article>
+        </section>
+        <<footer class="footer">
+            <p>Derechos reservados GamerStore &COPY; 2024</p>
+        </footer>
+    </body>
+</html>
