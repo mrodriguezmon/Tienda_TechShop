@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Soporte Técnico</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <style>
+            .form-container {
+                max-width: 600px;
+                margin: auto;
+                padding: 20px;
+                background-color: #f7f7f7;
+                border-radius: 10px;
+            }
+            .form-group {
+                margin-bottom: 15px;
+            }
+            .form-control {
+                height: calc(1.5em + .75rem + 2px);
+                padding: .25rem .5rem;
+                font-size: .875rem;
+            }
+            label {
+                font-size: .875rem;
+            }
+            button {
+                padding: .375rem .75rem;
+                font-size: .875rem;
+            }
+        </style>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"></header>
+        <div class="container">
+            <h2 class="mt-5 text-center">Soporte Técnico</h2>
+            <div class="form-container mt-4">
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="correo@correo.com" required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" class="form-control" id="telefono" name="telefono" required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="consulta">Tipo de consulta</label>
+                        <select class="form-control" id="consulta" name="consulta" required="true">
+                            <option value="">Seleccione una opción</option>
+                            <option value="1">Falta de actualización de inventario en sitio web</option>
+                            <option value="2">No encuentro un artículo</option>
+                            <option value="3">Producto defectuoso</option>
+                            <option value="4">Otros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Detalle de mensaje</label>
+                        <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required="true"></textarea>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="declaracion" name="declaracion" required="true"/>
+                        <label class="form-check-label" for="declaracion">Declaro bajo juramento que la información es veraz</label>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="reset" class="btn btn-secondary btn-sm">Limpiar</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>
+
+

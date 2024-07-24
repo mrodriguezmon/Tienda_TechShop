@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Gamer Store - Cliente</title>
+        <link th:href="@{/css/estilos.css}" rel="stylesheet"/>
+    </head>
+    <body>
+        <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <button
+                            type="button"
+                            class="btn btn-custom-primary btn-block"
+                            data-bs-toggle="modal"
+                            data-bs-target="#agregarCliente">
+                            <i class="fas fa-plus"></i> [[#{cliente.agregar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2 Fragmento para agregar cliente, es la ventana modal -->
+        <section th:fragment="agregarCliente">
+            <div id="agregarCliente" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">[[#{cliente.agregar}]]</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form th:action="@{/cliente/guardar}" th:object="${cliente}" method="POST" class="was-validated">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="nombre">[[#{cliente.nombre}]]</label>
+                                    <input type="text" class="form-control" name="nombre" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="apellidos">[[#{cliente.apellidos}]]</label>
+                                    <input type="text" class="form-control" name="apellidos" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="correoElectronico">[[#{cliente.correoElectronico}]]</label>
+                                    <input type="email" class="form-control" name="correoElectronico" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="provincia">[[#{cliente.provincia}]]</label>
+                                    <select class="form-control" name="provincia" required="true">
+                                        <option value="San José">San José</option>
+                                        <option value="Alajuela">Alajuela</option>
+                                        <option value="Cartago">Cartago</option>
+                                        <option value="Heredia">Heredia</option>
+                                        <option value="Guanacaste">Guanacaste</option>
+                                        <option value="Puntarenas">Puntarenas</option>
+                                        <option value="Limón">Limón</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="codigoPostal">[[#{cliente.codigoPostal}]]</label>
+                                    <input type="text" class="form-control" name="codigoPostal" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contraseña">[[#{cliente.contraseña}]]</label>
+                                    <input type="password" class="form-control" name="contraseña" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmarContraseña">[[#{cliente.confirmarContraseña}]]</label>
+                                    <input type="password" class="form-control" name="confirmarContraseña" required="true"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-custom-primary" type="submit">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3 Sección principal para mostrar la informacion de la entidad cliente -->
+        <section th:fragment="listadoClientes" id="clientes">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{cliente.listado}]]</h4>
+                            </div>
+                            <div th:if="${clientes != null and !clientes.empty}">
+                                <table class="table table-striped table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>[[#{cliente.nombre}]]</th>
+                                            <th>[[#{cliente.apellidos}]]</th>
+                                            <th>[[#{cliente.correoElectronico}]]</th>
+                                            <th>[[#{cliente.provincia}]]</th>
+                                            <th>[[#{cliente.codigoPostal}]]</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="cliente, contador : ${clientes}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${cliente.nombre}]]</td>
+                                            <td>[[${cliente.apellidos}]]</td>
+                                            <td>[[${cliente.correoElectronico}]]</td>
+                                            <td>[[${cliente.provincia}]]</td>
+                                            <td>[[${cliente.codigoPostal}]]</td>
+                                            <td>
+                                                <a href="@{/cliente/eliminar/}+${cliente.idCliente}" class="btn btn-custom-danger">
+                                                    <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                                                </a>
+                                                <a href="@{/cliente/modificar/}+${cliente.idCliente}" class="btn btn-custom-success">
+                                                    <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${clientes == null or clientes.empty}">
+                                <span>[[#{lista.vacia}]]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4 Fragmento que se utiliza en la página modifica.html -->
+        <section th:fragment="editarCliente">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/cliente/guardar}"
+                          th:object="${cliente}" 
+                          class="was-validated">
+                        <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
+                        <section th:replace="~{cliente/fragmentos :: botonesEditar}"/>
+                        <div id="details">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4>[[#{accion.actualizar}]]</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="nombre">[[#{cliente.nombre}]]</label>
+                                                    <input type="text" class="form-control"
+                                                           name="nombre" th:field="*{nombre}"
+                                                           required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="apellidos">[[#{cliente.apellidos}]]</label>
+                                                    <input type="text" class="form-control"
+                                                           name="apellidos" th:field="*{apellidos}"
+                                                           required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="correoElectronico">[[#{cliente.correoElectronico}]]</label>
+                                                    <input type="email" class="form-control"
+                                                           name="correoElectronico" th:field="*{correoElectronico}"
+                                                           required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="provincia">[[#{cliente.provincia}]]</label>
+                                                    <select class="form-control" name="provincia" th:field="*{provincia}" required="true">
+                                                        <option value="San José">San José</option>
+                                                        <option value="Alajuela">Alajuela</option>
+                                                        <option value="Cartago">Cartago</option>
+                                                        <option value="Heredia">Heredia</option>
+                                                        <option value="Guanacaste">Guanacaste</option>
+                                                        <option value="Puntarenas">Puntarenas</option>
+                                                        <option value="Limón">Limón</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="codigoPostal">[[#{cliente.codigoPostal}]]</label>
+                                                    <input type="text" class="form-control"
+                                                           name="codigoPostal" th:field="*{codigoPostal}"
+                                                           required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="contraseña">[[#{cliente.contraseña}]]</label>
+                                                    <input type="password" class="form-control"
+                                                           name="contraseña" th:field="*{contraseña}"
+                                                           required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="confirmarContraseña">[[#{cliente.confirmarContraseña}]]</label>
+                                                    <input type="password" class="form-control"
+                                                           name="confirmarContraseña" th:field="*{confirmarContraseña}"
+                                                           required="true"/>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
+        <section th:fragment="botonesEditar">
+            <div class="container py-4 mb-4 bg-light">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/cliente/listado}" class="btn btn-custom-primary">
+                            <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/cliente/eliminar/}+${cliente.idCliente}" class="btn btn-custom-danger">
+                            <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <button type="submit" class="btn btn-custom-success">
+                            <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
+
+

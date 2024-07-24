@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>GamerStore</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"></header>
+        <article class="article-content">
+            <p>Somos tienda online dedicados a envios del país, contamos con alta gama de marcas de computadoras y video juegos </p>
+            <div class="article-images">
+                <img src="imagenes/seriesx.jpeg" alt="Microsoft Series S" width="200"/>
+                <img src="imagenes/oled.jpeg" alt="Nintendo Switch" width="200"/>
+                <img src="imagenes/ps5slim.jpeg" alt="PlayStation 5" width="200"/>
+            </div>
+        </article>
+
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>
+

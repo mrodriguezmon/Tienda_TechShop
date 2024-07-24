@@ -1,0 +1,38 @@
+.btn-custom-primary {
+    background-color: #333333; /* Color de fondo negro */
+    border-color: #333333; /* Color de borde negro */
+    color: #ffffff; /* Color del texto blanco */
+}
+
+.btn-custom-primary:hover {
+    background-color: #555555; /* Color de fondo gris al hacer hover */
+    border-color: #555555; /* Color de borde gris al hacer hover */
+}
+
+.btn-custom-danger {
+    background-color: #333333; /* Color de fondo negro */
+    border-color: #333333; /* Color de borde negro */
+    color: #ffffff; /* Color del texto blanco */
+}
+
+.btn-custom-danger:hover {
+    background-color: #555555; /* Color de fondo gris al hacer hover */
+    border-color: #555555; /* Color de borde gris al hacer hover */
+}
+
+.btn-custom-success {
+    background-color: #333333; /* Color de fondo negro */
+    border-color: #333333; /* Color de borde negro */
+    color: #ffffff; /* Color del texto blanco */
+}
+
+.btn-custom-success:hover {
+    background-color: #555555; /* Color de fondo gris al hacer hover */
+    border-color: #555555; /* Color de borde gris al hacer hover */
+}
+
+.form-control {
+    color: #000000; /* Color del texto de los campos de entrada a negro */
+}
+
+
